@@ -1,4 +1,4 @@
-import { defineStorage } from '@aws-amplify/backend';
+import { defineFunction, defineStorage } from '@aws-amplify/backend';
 
 export const storage = defineStorage({
   name: 'amplifyTeamDrive',
@@ -6,5 +6,10 @@ export const storage = defineStorage({
     'csv/*': [
     allow.authenticated.to(['read','write']),
     ],
-  })
+  }),
+  triggers: {
+    onUpload: defineFunction({
+      entry: './on-upload-handler.ts'
+    })
+  }
 });
