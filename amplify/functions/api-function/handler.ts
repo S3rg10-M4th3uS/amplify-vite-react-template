@@ -28,7 +28,7 @@ export const handler: APIGatewayProxyHandler = async (event) => {
       "Access-Control-Allow-Origin": "*", 
       "Access-Control-Allow-Headers": "*", 
     },
-      body: newCsvContent,
+      body: JSON.stringify(newCsvContent),
     };
   } catch (error) {
     return {
