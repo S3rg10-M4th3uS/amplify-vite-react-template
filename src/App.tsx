@@ -6,7 +6,7 @@ function App() {
   const { user, signOut } = useAuthenticator();
   return (
     <main>
-      <h1>{user?.signInDetails?.loginId}'s todos</h1>
+      <h1>Usuário: {user?.signInDetails?.loginId}</h1>
       <DefaultFileUploaderExample />
       <button onClick={signOut}>Deslogar</button>
     </main>

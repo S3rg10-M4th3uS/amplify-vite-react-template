@@ -3,6 +3,7 @@ import { APIGatewayProxyHandler } from 'aws-lambda';
 export const handler: APIGatewayProxyHandler = async (event) => {
   try {
     console.log("event", event);
+    console.log("OI00");
     if (!event.body) {
       return {
         statusCode: 400,
@@ -11,7 +12,7 @@ export const handler: APIGatewayProxyHandler = async (event) => {
     }
 
     let csvContent = event.body;
-
+    console.log("OI1");
     // Divide o conteúdo em linhas (suporta quebra de linha Unix e Windows)
     const lines = csvContent.split(/\r?\n/);
 
@@ -22,7 +23,7 @@ export const handler: APIGatewayProxyHandler = async (event) => {
 
     // Junta as linhas novamente para formar o novo conteúdo CSV
     const newCsvContent = lines.join('\n');
-
+    console.log(newCsvContent);
     return {
       statusCode: 200,
           headers: {
