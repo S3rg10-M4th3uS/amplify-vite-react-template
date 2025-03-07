@@ -18,13 +18,8 @@ const processFile = async ({ file }: { file: File }): Promise<{ file: File; key:
                 }
             }
         });
-
         const { body } = await restOperation.response;
-        const response = await body.json();
 
-        if (!response) {
-            throw new Error('Erro ao processar o arquivo CSV na Lambda');
-        }
 
         // Obtém o CSV modificado (como texto) da resposta
         const modifiedCsv = await body.text();
