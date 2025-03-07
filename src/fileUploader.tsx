@@ -2,6 +2,7 @@ import { FileUploader } from '@aws-amplify/ui-react-storage';
 import '@aws-amplify/ui-react/styles.css';
 import { post } from 'aws-amplify/api';
 
+
 const processFile = async ({ file }: { file: File }): Promise<{ file: File; key: string }> => {
         try {
         // Lê o conteúdo do arquivo CSV como texto
@@ -9,7 +10,7 @@ const processFile = async ({ file }: { file: File }): Promise<{ file: File; key:
 
         // Chama o endpoint da Lambda que remove a última linha do CSV
         const restOperation = post({
-            apiName: 'myRestApi',
+            apiName: "myRestApi", 
             path: 'items',
             options: {
                 body: {

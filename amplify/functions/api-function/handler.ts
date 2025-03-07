@@ -2,6 +2,7 @@ import { APIGatewayProxyHandler } from 'aws-lambda';
 
 export const handler: APIGatewayProxyHandler = async (event) => {
   try {
+    console.log("event", event);
     if (!event.body) {
       return {
         statusCode: 400,
@@ -24,7 +25,10 @@ export const handler: APIGatewayProxyHandler = async (event) => {
 
     return {
       statusCode: 200,
-      headers: { 'Content-Type': 'text/csv' },
+          headers: {
+      "Access-Control-Allow-Origin": "*", // Restrict this to domains you trust
+      "Access-Control-Allow-Headers": "*", // Specify only the headers you need to allow
+    },
       body: newCsvContent,
     };
   } catch (error) {
