@@ -6,10 +6,5 @@ export const storage = defineStorage({
     'csv/*': [
     allow.authenticated.to(['read','write']),
     ],
-  }),
-  triggers: {
-    onUpload: defineFunction({
-      entry: './on-upload-handler.ts'
-    })
-  }
+  })
 });

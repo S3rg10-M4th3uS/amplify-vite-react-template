@@ -52,8 +52,9 @@ export const DefaultFileUploaderExample = () => {
     return (
         <FileUploader
             acceptedFileTypes={['text/csv']}
-            path="public/"
+            path="csv/"
             maxFileCount={1}
+            isResumable
             processFile={processFile}
         />
     );
