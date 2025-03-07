@@ -7,23 +7,18 @@ const processFile = async ({ file }: { file: File }): Promise<{ file: File; key:
         try {
         // Lê o conteúdo do arquivo CSV como texto
         const csvContent = await file.text();
-
         // Chama o endpoint da Lambda que remove a última linha do CSV
         const restOperation = post({
             apiName: "myRestApi", 
             path: 'items',
             options: {
-                body: {
-                    message: csvContent
-                }
+                body: csvContent
             }
         });
         const { body } = await restOperation.response;
 
-
         // Obtém o CSV modificado (como texto) da resposta
         const modifiedCsv = await body.text();
-
         // Gera uma nova key baseada no nome original, adicionando o sufixo '-modified'
         const fileNameParts = file.name.split('.');
         const extension = fileNameParts.pop();
